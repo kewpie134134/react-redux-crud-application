@@ -1,37 +1,30 @@
-// JSXを使用する際は、Reactをインポートする必要がある
 import React from "react";
 
-// JSX表記方法
-// class App extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <label htmlFor="bar">bar</label>
-//         <input
-//           type="text"
-//           onChange={() => {
-//             console.log("I am clicked!!");
-//           }}
-//         ></input>
-//       </React.Fragment>
-//     );
-//   }
-// }
-
 const App = () => {
+  const profiles = [
+    { name: "Taro", age: 10 },
+    { name: "Hanako", age: 5 },
+    { name: "NoName" },
+  ];
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {profiles.map((profile, index) => {
+        return <User name={profile.name} age={profile.age} key={index} />;
+      })}
     </div>
   );
 };
 
-const Cat = () => {
-  return <div>Meow!</div>;
+const User = (props) => {
+  return (
+    <div>
+      Hi, I am {props.name}!, and {props.age} years old!.
+    </div>
+  );
+};
+
+User.defaultProps = {
+  age: 1,
 };
 
 export default App;
