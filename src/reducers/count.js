@@ -2,6 +2,7 @@ import { INCREMENT, DECREMENT } from "../actions";
 
 const initialState = { value: 0 };
 
+// propsで受け渡すもの
 export default (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
